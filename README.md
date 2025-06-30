@@ -31,9 +31,7 @@ A full-stack social media web application built using the **MERN** stack (MongoD
 
 ## 📸 Screenshots
 
-> Add your UI screenshots here
-> You can use existing assets like `/client/public/assets/post1.jpeg` or paste snapshots manually.
-
+//
 ---
 
 ## 🛠️ Getting Started
