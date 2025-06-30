@@ -1,6 +1,5 @@
-Sure! Here's the complete `README.md` content in a **single file** – just copy and paste it into your `README.md`:
 
----
+
 
 ````markdown
 # IITConnect 🧑‍🤝‍🧑🌐
