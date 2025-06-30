@@ -112,8 +112,8 @@ npm start
 ## 📬 Contact
 
 * 📧 Email: [prateekrajput@gmail.com](mailto:prateekrajput@gmail.com)
-* 📸 Instagram: [@prateek\_\_rajput](https://instagram.com/prateek.r.rajput)
-* 💼 LinkedIn: *\[Add your LinkedIn here]*
+* 📸 Instagram: [@prateek.r.rajput](https://instagram.com/prateek.r.rajput)
+  
 
 ---
 
