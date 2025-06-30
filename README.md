@@ -1,3 +1,8 @@
+Sure! Here's the complete `README.md` content in a **single file** – just copy and paste it into your `README.md`:
+
+---
+
+````markdown
 # IITConnect 🧑‍🤝‍🧑🌐
 
 A full-stack social media web application built using the **MERN** stack (MongoDB, Express.js, React.js, Node.js), designed specifically for the IIT community to **connect, share, and interact** with fellow students.
@@ -45,3 +50,79 @@ A full-stack social media web application built using the **MERN** stack (MongoD
 ```bash
 git clone https://github.com/Prateekrajput9/iiticonnect.git
 cd iiticonnect
+````
+
+---
+
+### 2. Install Dependencies
+
+**Client:**
+
+```bash
+cd client
+npm install
+```
+
+**Server:**
+
+```bash
+cd ../server
+npm install
+```
+
+---
+
+### 3. Set Up Environment Variables
+
+Create a `.env` file in the `/server` folder:
+
+```env
+PORT=5000
+MONGO_URL=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
+
+---
+
+### 4. Start the App
+
+**Server:**
+
+```bash
+cd server
+npm start
+```
+
+**Client:**
+
+```bash
+cd client
+npm start
+```
+
+---
+
+## 🙋‍♂️ About the Author
+
+**Prateek Rajput**
+2nd-year BTech Student at IIT Indore
+🚀 Passionate about full-stack development and building meaningful apps.
+
+---
+
+## 📬 Contact
+
+* 📧 Email: [prateekrajput@gmail.com](mailto:prateekrajput@gmail.com)
+* 📸 Instagram: [@prateek\_\_rajput](https://instagram.com/prateek.r.rajput)
+* 💼 LinkedIn: *\[Add your LinkedIn here]*
+
+---
+
+
+
+---
+
+
+```
+
+
