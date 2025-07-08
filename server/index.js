@@ -17,6 +17,11 @@ import { verifyToken } from "./middleware/auth.js";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
 import { users, posts } from "./data/index.js";
+import http from "http";
+import { Server as SocketIOServer } from "socket.io";
+import chatRoutes from "./routes/chat.js";
+import Message from "./models/Message.js";
+import jwt from "jsonwebtoken";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -46,6 +51,7 @@ const upload = multer({ storage });
 /* ROUTES WITH FILES */
 app.post("/auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
+app.use("/chat", chatRoutes);
 
 /* ROUTES */
 app.use("/auth", authRoutes);
@@ -54,13 +60,46 @@ app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
+const server = http.createServer(app);
+const io = new SocketIOServer(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
+
+io.use((socket, next) => {
+  const token = socket.handshake.auth.token;
+  if (!token) {
+    return next(new Error("Authentication error"));
+  }
+  try {
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    socket.user = payload;
+    next();
+  } catch (err) {
+    next(new Error("Authentication error"));
+  }
+});
+
+io.on("connection", (socket) => {
+  const userId = socket.user.id;
+  socket.join(userId);
+
+  socket.on("send_message", async ({ recipient, content }) => {
+    const message = new Message({ sender: userId, recipient, content });
+    await message.save();
+    io.to(recipient).to(userId).emit("receive_message", message);
+  });
+});
+
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    server.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME */
     // User.insertMany(users);

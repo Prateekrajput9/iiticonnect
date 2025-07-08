@@ -6,10 +6,14 @@ import MyPostWidget from "scenes/widgets/MyPostWidget";
 import PostsWidget from "scenes/widgets/PostsWidget";
 import AdvertWidget from "scenes/widgets/AdvertWidget";
 import FriendListWidget from "scenes/widgets/FriendListWidget";
+import ChatWidget from "../../components/ChatWidget";
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-  const { _id, picturePath } = useSelector((state) => state.user);
+  const { _id, picturePath, friends = [] } = useSelector((state) => state.user);
+  // For demo: pick first friend as chat recipient
+  const recipientId = friends.length > 0 ? friends[0]._id || friends[0] : null;
+  const recipientName = friends.length > 0 ? friends[0].firstName || "Friend" : "Friend";
 
   return (
     <Box>
@@ -39,6 +43,11 @@ const HomePage = () => {
           </Box>
         )}
       </Box>
+      {recipientId && (
+        <Box position="fixed" bottom={16} right={16} zIndex={1000}>
+          <ChatWidget recipientId={recipientId} recipientName={recipientName} />
+        </Box>
+      )}
     </Box>
   );
 };

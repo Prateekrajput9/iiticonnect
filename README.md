@@ -99,6 +99,39 @@ npm start
 
 ---
 
+## MERN Chat Application
+
+### Prerequisites
+- Node.js (v16+ recommended)
+- MongoDB instance (local or cloud)
+
+### Backend Setup
+1. `cd server`
+2. Create a `.env` file with:
+   - `MONGO_URL=your_mongodb_connection_string`
+   - `JWT_SECRET=your_jwt_secret`
+3. Install dependencies: `npm install`
+4. Start the server: `npm start`
+
+### Frontend Setup
+1. `cd client`
+2. Create a `.env` file with:
+   - `REACT_APP_SOCKET_URL=http://localhost:6001`
+3. Install dependencies: `npm install`
+4. Start the client: `npm start`
+
+### Features
+- User authentication (JWT, bcrypt)
+- Real-time chat (Socket.IO)
+- MongoDB for data storage
+- React frontend with chat widget
+
+### Usage
+- Register/login as a user
+- Chat with your friends in real time
+
+---
+
 ## 🙋‍♂️ About the Author
 
 **Prateek Rajput**
