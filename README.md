@@ -1,125 +1,64 @@
+# MERN Chat Application
 
+This is a simple full-stack chat application built with the MERN stack and Socket.IO.
 
+## Tech Stack
 
-````markdown
-# IITConnect 🧑‍🤝‍🧑🌐
+• MongoDB & Mongoose – database
+• Express.js & Node.js – REST API and Socket.IO server
+• React (Vite) – client
+• Socket.IO – real-time messaging
+• JWT & bcrypt – authentication
 
-A full-stack social media web application built using the **MERN** stack (MongoDB, Express.js, React.js, Node.js), designed specifically for the IIT community to **connect, share, and interact** with fellow students.
+## Folder Structure
 
----
+```
+.
+├── server        # Backend API & Socket.IO server
+│   ├── src
+│   │   ├── config
+│   │   ├── controllers
+│   │   ├── middleware
+│   │   ├── models
+│   │   └── routes
+│   └── package.json
+└── client        # Frontend (React)
+    ├── src
+    │   ├── components
+    │   ├── context
+    │   └── ...
+    └── package.json
+```
 
-## 🚀 Features
+## Getting Started
 
-- 🔐 **Authentication** (Register / Login)
-- 👤 **User Profiles** with images and bios
-- 📝 **Post Creation** with image uploads
-- 🧡 **Like & Comment** on posts
-- 🧑‍🤝‍🧑 **Friendship System**
-- 📜 **News Feed** showing real-time updates
-- 🎨 Fully responsive modern UI using **Material UI**
-
----
-
-## 🧰 Tech Stack
-
-| Frontend  | Backend   | Database | Other Tools      |
-|-----------|-----------|----------|------------------|
-| React.js  | Node.js   | MongoDB  | Mongoose, JWT    |
-| Redux     | Express.js|          | Multer, BcryptJS |
-
----
-
-## 📸 Screenshots
-
-//
----
-
-## 🛠️ Getting Started
-
-### Prerequisites:
-- Node.js & npm
-- MongoDB (Local or Cloud)
-
----
-
-### 1. Clone the Repository
+1. Install dependencies
 
 ```bash
-git clone https://github.com/Prateekrajput9/iiticonnect.git
-cd iiticonnect
-````
+# Root folder
+cd server && npm install
+cd ../client && npm install
+```
 
----
-
-### 2. Install Dependencies
-
-**Client:**
+2. Create environment file for server
 
 ```bash
-cd client
-npm install
+cp server/.env.example server/.env
+# then edit values if needed
 ```
 
-**Server:**
+3. Run development servers (in separate terminals)
 
 ```bash
-cd ../server
-npm install
+# Server
+cd server && npm run dev
+
+# Client
+cd client && npm run dev
 ```
 
----
+4. Open the app
 
-### 3. Set Up Environment Variables
-
-Create a `.env` file in the `/server` folder:
-
-```env
-PORT=3001
-MONGO_URL=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-```
-
----
-
-### 4. Start the App
-
-**Server:**
-
-```bash
-cd server
-npm start
-```
-
-**Client:**
-
-```bash
-cd client
-npm start
-```
-
----
-
-## 🙋‍♂️ About the Author
-
-**Prateek Rajput**
-2nd-year BTech Student at IIT Indore
-🚀 Passionate about full-stack development and building meaningful apps.
-
----
-
-## 📬 Contact
-
-* 📧 Email: [prateekrajput@gmail.com](mailto:prateekrajput@gmail.com)
-* 📸 Instagram: [@prateek.r.rajput](https://instagram.com/prateek.r.rajput)
-  
-
----
-
-
-
----
-
-
-```
+Navigate to `http://localhost:5173` in your browser.
 
 
