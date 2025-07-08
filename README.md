@@ -1,125 +1,39 @@
+# MERN Chat Application
 
+A full-stack chat application built with the MERN stack:
+- **MongoDB** for the database
+- **Express.js** and **Node.js** for backend APIs
+- **React** for the frontend
+- **Socket.IO** for real-time chat
+- **JWT** and **bcrypt** for user authentication
 
+## Getting Started
 
-````markdown
-# IITConnect 🧑‍🤝‍🧑🌐
+### Backend (server)
+1. `cd server`
+2. Install dependencies: `npm install`
+3. Create a `.env` file with your MongoDB URI and JWT secret:
+   ```
+   MONGO_URL=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   ```
+4. Start the server: `npm start`
 
-A full-stack social media web application built using the **MERN** stack (MongoDB, Express.js, React.js, Node.js), designed specifically for the IIT community to **connect, share, and interact** with fellow students.
+### Frontend (client)
+1. `cd client`
+2. Install dependencies: `npm install`
+3. Create a `.env` file with the backend URL (already set to `http://localhost:6001` by default):
+   ```
+   REACT_APP_SERVER_URL=http://localhost:6001
+   ```
+4. Start the React app: `npm start`
 
----
-
-## 🚀 Features
-
-- 🔐 **Authentication** (Register / Login)
-- 👤 **User Profiles** with images and bios
-- 📝 **Post Creation** with image uploads
-- 🧡 **Like & Comment** on posts
-- 🧑‍🤝‍🧑 **Friendship System**
-- 📜 **News Feed** showing real-time updates
-- 🎨 Fully responsive modern UI using **Material UI**
-
----
-
-## 🧰 Tech Stack
-
-| Frontend  | Backend   | Database | Other Tools      |
-|-----------|-----------|----------|------------------|
-| React.js  | Node.js   | MongoDB  | Mongoose, JWT    |
-| Redux     | Express.js|          | Multer, BcryptJS |
-
----
-
-## 📸 Screenshots
-
-//
----
-
-## 🛠️ Getting Started
-
-### Prerequisites:
-- Node.js & npm
-- MongoDB (Local or Cloud)
+## Features
+- User registration and login with JWT authentication
+- Real-time chat between users using Socket.IO
+- Secure password storage with bcrypt
+- MongoDB for storing users and messages
 
 ---
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/Prateekrajput9/iiticonnect.git
-cd iiticonnect
-````
-
----
-
-### 2. Install Dependencies
-
-**Client:**
-
-```bash
-cd client
-npm install
-```
-
-**Server:**
-
-```bash
-cd ../server
-npm install
-```
-
----
-
-### 3. Set Up Environment Variables
-
-Create a `.env` file in the `/server` folder:
-
-```env
-PORT=3001
-MONGO_URL=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-```
-
----
-
-### 4. Start the App
-
-**Server:**
-
-```bash
-cd server
-npm start
-```
-
-**Client:**
-
-```bash
-cd client
-npm start
-```
-
----
-
-## 🙋‍♂️ About the Author
-
-**Prateek Rajput**
-2nd-year BTech Student at IIT Indore
-🚀 Passionate about full-stack development and building meaningful apps.
-
----
-
-## 📬 Contact
-
-* 📧 Email: [prateekrajput@gmail.com](mailto:prateekrajput@gmail.com)
-* 📸 Instagram: [@prateek.r.rajput](https://instagram.com/prateek.r.rajput)
-  
-
----
-
-
-
----
-
-
-```
 
 

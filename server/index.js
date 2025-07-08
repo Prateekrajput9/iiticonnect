@@ -11,6 +11,9 @@ import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
+import chatRoutes from "./routes/chat.js";
+import http from "http";
+import { Server as SocketIOServer } from "socket.io";
 import { register } from "./controllers/auth.js";
 import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
@@ -31,6 +34,9 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+
+// Add chat routes
+app.use("/chat", chatRoutes);
 
 /* FILE STORAGE */
 const storage = multer.diskStorage({
@@ -54,13 +60,34 @@ app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
+const server = http.createServer(app);
+const io = new SocketIOServer(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
+
+io.on("connection", (socket) => {
+  // Join a room for private messaging
+  socket.on("join", (userId) => {
+    socket.join(userId);
+  });
+
+  // Handle sending a message
+  socket.on("sendMessage", ({ sender, receiver, message }) => {
+    // Emit to the receiver's room
+    io.to(receiver).emit("receiveMessage", { sender, message });
+  });
+});
+
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    server.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME */
     // User.insertMany(users);
